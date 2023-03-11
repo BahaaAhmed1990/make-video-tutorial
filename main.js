@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     "style",
     `width:${window.innerWidth - 150}px;height:${window.innerHeight - 150}px`
   );
-  mainBack.style.backgroundImage = `url('/img/Gabriel1.jpg')`;
+  mainBack.style.backgroundImage = `url('./img/Gabriel1.jpg')`;
 
   btn.click();
 
   setTimeout(() => {
-    mainBack.style.backgroundImage = `url('/img/Gabriel1.jpg')`;
+    mainBack.style.backgroundImage = `url('./img/Gabriel1.jpg')`;
     loader.style.display = "none";
   }, 3000);
 });
@@ -28,7 +28,7 @@ btn.addEventListener("click", function () {
     } else {
       console.log(num);
       num++;
-      mainBack.style.backgroundImage = `url('/img/Gabriel${num}.jpg')`;
+      mainBack.style.backgroundImage = `url('./img/Gabriel${num}.jpg')`;
     }
   }
 });
