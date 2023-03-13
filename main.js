@@ -1,34 +1,65 @@
-const btn = document.querySelector("button");
+const right = document.querySelector("#right");
+const left = document.querySelector("#left");
+const full = document.querySelector("#full");
+const content = document.querySelector("#content");
 const mainBack = document.querySelector("#main-back");
 const loader = document.querySelector("#loader");
+const preload = document.querySelector("#preload");
+const myImg = document.querySelector(".myImg");
 var num = 1;
 
 document.addEventListener("DOMContentLoaded", function () {
-  mainBack.setAttribute(
+  // load all imgs
+  for (let index = 1; index < 16; index++) {
+    let img = document.createElement("img");
+    img.src = `./img/Gabriel${index}.jpg`;
+    preload.append(img);
+  }
+  content.setAttribute(
     "style",
-    `width:${window.innerWidth - 150}px;height:${window.innerHeight - 150}px`
+    `width:${window.innerWidth - 100}px;height:${window.innerHeight - 50}px`
   );
-  mainBack.style.backgroundImage = `url('./img/Gabriel1.jpg')`;
 
-  btn.click();
+  // btn.click();
 
   setTimeout(() => {
-    mainBack.style.backgroundImage = `url('./img/Gabriel1.jpg')`;
+    // mainBack.style.backgroundImage = `url('./img/Gabriel1.jpg')`;
     loader.style.display = "none";
   }, 3000);
 });
 
-btn.addEventListener("click", function () {
-  num = 0;
+right.addEventListener("click", function () {
+  // let num = 1;
   let id = setInterval(frame, 16.6);
 
-  function frame() {
-    if (num === 15) {
+  function frame(params) {
+    console.log(num);
+    if (num >= 15) {
       clearInterval(id);
     } else {
-      console.log(num);
+      myImg.src = `./img/Gabriel${num}.jpg`;
       num++;
-      mainBack.style.backgroundImage = `url('./img/Gabriel${num}.jpg')`;
     }
   }
+});
+
+left.addEventListener("click", function () {
+  // let num = 1;
+  let id = setInterval(frame, 16.6);
+
+  function frame(params) {
+    console.log(num);
+    if (num <= 1) {
+      clearInterval(id);
+    } else {
+      myImg.src = `./img/Gabriel${num}.jpg`;
+      num--;
+    }
+  }
+});
+
+full.addEventListener("click", function () {
+  content.requestFullscreen().then(() => {
+    console.log("full screen");
+  });
 });
